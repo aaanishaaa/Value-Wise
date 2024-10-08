@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>House Price Prediction</title>
-    <!-- Add your CSS styles or include external stylesheets here -->
     <style>
         /* Add your styles here */
         body {
@@ -15,24 +14,25 @@
         }
 
         header {
-            background-color: #333;
+            background-color: #157e8a;
             color: #fff;
             padding: 10px;
+            margin-bottm:10px;
             text-align: center;
         }
 
         main {
             max-width: 800px;
-            margin: 20px auto;
+            margin: 50px auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #93bfc4 ;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         footer {
             text-align: center;
-            padding: 10px;
-            background-color: #333;
+            padding: 2px;
+            background-color: #157e8a;
             color: #fff;
             position: fixed;
             bottom: 0;
@@ -56,54 +56,187 @@
         }
 
         button {
-            background-color: #333;
+            background-color: #157e8a;
             color: #fff;
-            padding: 10px;
+            padding: 10px 20px;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
+            transition: box-shadow 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        
+        button:hover {
+            box-shadow: 0 0 10px rgba(21, 126, 138, 0.8), 0 0 20px rgba(21, 126, 138, 0.6), 0 0 30px rgba(21, 126, 138, 0.4);
         }
 
         /* Style for displaying the predicted price */
         #predictedPrice {
-            margin-top: 20px;
+            margin-top: 25px;
             font-weight: bold;
         }
+        ul li{
+            list-style: none;
+            display: inline;
+            padding: 10px;
+        }
+
+
+        .input-container {
+            position: relative;
+            max-width: 765px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    
+        .input-container label {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 16px;
+            color: #333;
+        }
+    
+        .input-container input {
+            width: 100%;
+            padding: 10px;
+            padding-right: 20px; /* Extra space for the 'sqft' text */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 16px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s;
+        }
+        h2 {
+            color: white;
+            display: flex;
+            justify-content: center; 
+            align-items: center;          
+            text-align: center;    
+        }
+        
+        .input-container input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+    
+        .input-container .suffix {
+            position: absolute;
+            top: 68%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 17px;
+            color: #666;
+            pointer-events: none; 
+        }
+    
+        .input-container input:hover {
+            border-color: #007bff;
+        }
+
+
+
+        .custom-dropdown {
+            position: relative;
+            max-width: 825px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    
+        .custom-dropdown label {
+            display: block;
+            margin-bottom: 2px;
+            font-size: 16px;
+            color: #333;
+        }
+    
+        .custom-dropdown select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff;
+            font-size: 16px;
+            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            transition: border-color 0.3s;
+        }
+    
+        .custom-dropdown select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+    
+        .custom-dropdown select:hover {
+            border-color: #007bff;
+        }
+    
+        .custom-dropdown::after {
+            content: '\25BC';
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            font-size: 16px;
+            color: gray;
+        }
+
     </style>
 </head>
 <body>
     <header>
-        <h1>House Price Prediction</h1>
+        <div>
+            <h1>ValueWise</h1>
+            <ul>
+                <li>Home</li>
+                <li>Services</li>
+                <li>Contact Us</li>
+                <li>See for Other Cities</li>
+                <li>Talk to Our Experts</li>
+            </ul>
+        </div>
     </header>
     <main>
-        <p>Welcome to House Price Prediction Model!</p>
-
-        <!-- Form for input fields -->
+        <h2>Welcome to ValueWise
+            <br>
+            Get data-driven predictions for your home’s value!</h2>
         
 <form id="predictionForm">
-    <label for="beds">Bedrooms:</label>
-    <select id="beds" name="beds">
-        <option value="" disabled selected>Select number of bedrooms</option>
-        {% for bedroom in bedrooms %}
-            <option value="{{ bedroom }}">{{ bedroom }}</option>
-        {% endfor %}
-    </select>
+    <div class="custom-dropdown">
+        <label for="beds">Bedrooms:</label>
+        <select id="beds" name="beds">
+            <option value="" disabled selected>Select number of bedrooms</option>
+            {% for bedroom in bedrooms %}
+                <option value="{{ bedroom }}">{{ bedroom }}</option>
+            {% endfor %}
+        </select>
+    </div>
 
-    <label for="baths">Baths:</label>
-    <select id="baths" name="baths">
-        <option value="" disabled selected>Select number of bathrooms</option>
-        {% for bathroom in bathrooms %}
-            <option value="{{ bathroom }}">{{ bathroom }}</option>
-        {% endfor %}
-    </select>
 
+    <div class="custom-dropdown">
+        <label for="baths">Bath Rooms</label>
+        <select id="baths" name="baths">
+            <option value="" disabled selected>Select number of bathrooms</option>
+            {% for bathroom in bathrooms %}
+                <option value="{{ bathroom }}">{{ bathroom }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+ <div class="input-container">
     <label for="size">Size:</label>
-    <select id="size" name="size">
-        <option value="" disabled selected>Select size of the house</option>
-        {% for house_size in sizes %}
-            <option value="{{ house_size }}">{{ house_size }} sqft</option>
-        {% endfor %}
-    </select>
+    <input type="number" id="size" name="size" placeholder="Enter size of the house" min="1">
+    <span class="suffix">sqft</span>
+</div>
 
+<div class="custom-dropdown">
     <label for="zip_code">Zip Code:</label>
     <select id="zip_code" name="zip_code">
         <option value="" disabled selected>Select zip code</option>
@@ -111,7 +244,7 @@
             <option value="{{ zip_code }}">{{ zip_code }}</option>
         {% endfor %}
     </select>
-
+</div>
     <!-- Predict Price button -->
     <button type="button" onclick="sendData()">Predict Price</button>
 
@@ -160,7 +293,8 @@
             })
             .then(response => response.text())
             .then(price => {
-                document.getElementById("predictedPrice").innerHTML = "Price: INR " + price;
+                const formattedPrice = parseFloat(price).toFixed(2);
+                document.getElementById("predictedPrice").innerHTML = "Price: INR " + formattedPrice;
             });
         }
     </script>

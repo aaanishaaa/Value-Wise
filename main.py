@@ -71,7 +71,7 @@ def predict():
     input_data = pd.DataFrame([[bedrooms, bathrooms, size, zipcode]],
                                columns=['beds', 'baths', 'size', 'zip_code'])
 
-    print("Input Data:")
+    print("Input Data Here:")
     print(input_data)
 
     # Convert 'baths' column to numeric with errors='coerce'
